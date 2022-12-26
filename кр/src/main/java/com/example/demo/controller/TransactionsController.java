@@ -20,7 +20,6 @@ public class TransactionsController {
 
     private final TransactionsRepository transact;
     SaverService saverServ = new SaverService();
-    FinderService finderService = new FinderService();
 
     @Autowired
     public TransactionsController(
