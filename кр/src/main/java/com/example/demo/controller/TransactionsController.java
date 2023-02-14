@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.Entity.Transactions;
-import com.example.demo.Service.FinderService;
+
 import com.example.demo.Service.SaverService;
 import com.example.demo.repo.TransactionsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class TransactionsController {
 
 
     private final TransactionsRepository transact;
-    SaverService saverServ = new SaverService();
+    //SaverService saverServ = new SaverService();
 
     @Autowired
     public TransactionsController(
@@ -63,7 +63,7 @@ public class TransactionsController {
 
     @PostMapping("{id}/edit")
     public String TransactUpdate(
-        @PathVariable(value = "id") Integer id,
+        @PathVariable(value = "id") Integer customerId,
         @RequestParam(required = false, defaultValue = "14 13:12:11") String datetime,
         @RequestParam Integer mcc_code,
         @RequestParam Integer tr_type,
@@ -71,8 +71,20 @@ public class TransactionsController {
         @RequestParam Integer term_id
 
     ){
+        Transactions type = transact.findById(customerId).orElseThrow();
 
-        transact.save(saverServ.Save(id,datetime,mcc_code,tr_type,amount,term_id));
+        if(transact.existsById(customerId))
+        {
+            type.setCustomer_id(customerId);
+            type.setTr_datetime(datetime);
+            type.setMcc_code(mcc_code);
+            type.setTr_type(tr_type);
+            type.setAmount(amount);
+            type.setTerm_id(term_id);
+
+        }
+
+        transact.save(type);
         return "redirect:";
 
 

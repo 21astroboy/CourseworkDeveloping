@@ -23,7 +23,7 @@ public class UploadController {
 @Autowired
 private TransactionsRepository transact;
     //Save the uploaded file to this folder
-    private static String UPLOADED_FOLDER = "/Users/new/Desktop/Лабы";
+    private static String UPLOADED_FOLDER = "/D:/Projects/";
 
 
 @GetMapping("/blog-Transactions/add")

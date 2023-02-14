@@ -3,20 +3,21 @@ package com.example.demo.Entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "transactions")
 public class Transactions {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
+    @Column(name = "id")
     private Integer customer_id;
-    @Column
+    @Column(name = "tr_datetime")
     private String tr_datetime;
-    @Column
+    @Column(name = "mcc_code")
     private Integer mcc_code;
-    @Column
+    @Column(name = "tr_type")
     private Integer tr_type;
-    @Column
+    @Column(name = "amount")
     private Integer amount;
-    @Column
+    @Column(name = "term_id")
     private Integer term_id;
 
     public Transactions() {

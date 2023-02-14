@@ -1,3 +1,4 @@
+/*
 package com.example.demo.Service;
 
 import com.example.demo.Entity.Transactions;
@@ -14,3 +15,4 @@ public class FinderService {
 return res;
     }
 }
+*/
